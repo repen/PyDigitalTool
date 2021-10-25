@@ -5,6 +5,7 @@ Licensed under the MIT License
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class FootballMatch:
     match_id: str
@@ -23,13 +24,14 @@ class FootballMatch:
     statistics: str
 
     def get_unique_field(self):
-        """Вернуть уникальный атрибут объекта"""
+        """Вернуть уникальный атрибут объекта.
+        Реализовать обязательно"""
         return self.match_id
 
     def __hash__(self):
-        """Хешируем атрибуты которые будут менятся"""
+        """Хешируем атрибуты которые будут менятся
+        Реализовать обязательно"""
         return hash((self.home_goals, self.away_goals))
-        # return hash((self.elapsed_time,))
 
     def __str__(self):
         string = f"{self.elapsed_time}. {self.get_unique_field()} {self.home_team} {self.home_goals} - " \
@@ -43,15 +45,12 @@ class ChangeTracker:
         self.state_container = dict()
         self.functions = []
 
-
     def registration_function(self, func):
         self.functions.append(func)
-
 
     def get_update(self, new_object, old_object):
         for func in self.functions:
             func(new_object, old_object)
-
 
     def load(self, objects: List[FootballMatch]):
         for new_object in objects:
