@@ -3,7 +3,7 @@ Copyright (c) 2021 Plugin Andrey (9keepa@gmail.com)
 Licensed under the MIT License
 """
 from dataclasses import dataclass
-from typing import List
+from typing import List, Any
 
 
 @dataclass
@@ -52,7 +52,7 @@ class ChangeTracker:
         for func in self.functions:
             func(new_object, old_object)
 
-    def load(self, objects: List[FootballMatch]):
+    def load(self, objects: List[Any]):
         for new_object in objects:
             key = new_object.get_unique_field()
             if key in self.state_container:
