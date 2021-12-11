@@ -2,10 +2,10 @@
 Copyright (c) 2021 Plugin Andrey (9keepa@gmail.com)
 Licensed under the MIT License
 """
-from typing import List
-import logging
-from sport.api import FootballSport
 import time
+import logging
+from typing import List
+from sport.api import FootballSport
 from toolkit import FootballMatch, ChangeTracker
 
 logging.basicConfig(
